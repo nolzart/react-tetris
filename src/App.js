@@ -3,7 +3,7 @@ import Tetris from './components/Tetris';
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Tetris />
     </div>
   );
