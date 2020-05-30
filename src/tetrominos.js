@@ -60,6 +60,6 @@ export const TETROMINOS = {
 
 export const randomTetromino = () => {
     const tetrominos = 'IJLOSTZ'
-    const randomTetrominus = tetrominos[Math.floor(Math.random() * 6 + 1)]
-    return TETROMINOS[randomTetrominus]
+    const randomTetrominos = tetrominos[Math.floor(Math.random() * tetrominos.length)]
+    return TETROMINOS[randomTetrominos]
 }

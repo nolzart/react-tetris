@@ -9,6 +9,32 @@ export const usePlayer = () => {
         colided: false
     })
 
+    const rotate = (matrix, dir) => {
+        const mtrx = matrix.map((_, index) =>
+            matrix.map(col => col[index]),
+        );
+        return dir > 0 ? mtrx.map(row => row.reverse()) : mtrx.reverse();
+    }
+    const playerRotate = (stage, dir) => {
+        const clonedPlayer = JSON.parse(JSON.stringify(player))
+        clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir)
+        
+        const pos = clonedPlayer.pos.x
+        let offset = 1
+        console.log(clonedPlayer)
+        while(checkCollision(clonedPlayer, stage, {x: 0, y: 0})) {
+            clonedPlayer.pos.x += offset;
+            offset = - (offset + (offset > 0 ? 1 : - 1))
+            if(offset > clonedPlayer.tetromino[0].length) {
+                rotate(clonedPlayer.tetromino, -dir);
+                clonedPlayer.pos.x = pos
+                console.log(clonedPlayer)
+                return;
+            }
+        }
+        setPlayer(clonedPlayer)
+    }
+
     const updatePlayerPos = ({ x, y, collided }) => {
         setPlayer(prev => ({
             ...prev,
@@ -25,34 +51,7 @@ export const usePlayer = () => {
         })
     }, [])
 
-    const rotate = (matrix, dir) => {
-        const rotatedTetro = matrix.map((_, index) =>
-            matrix.map(col => col[index]),
-        );
-        return dir > 0 ? rotatedTetro.map(row => row.reverse()) : rotatedTetro.reverse();
-    }
-
-    const playerRotate = (stage, dir) => {
-        const clonedPlayer = JSON.parse(JSON.stringify(player))
-        clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir)
-
-        const pos = clonedPlayer.pos.x
-        let offset = 1
-        console.log(clonedPlayer)
-        while(checkCollision(clonedPlayer, stage, {x: 0, y: 0})) {
-            clonedPlayer.pos.x += offset;
-            offset = - (offset + (offset > 0 ? 1 : - 1))
-            if(offset > clonedPlayer.tetromino[0].length) {
-                rotate(clonedPlayer.tetromino, -dir);
-                clonedPlayer.pos.x = pos
-                console.log(clonedPlayer)
-                return;
-            }
-        }
-        
-
-        setPlayer(clonedPlayer)
-    }
+    
 
     return [player, updatePlayerPos, resetPlayer, playerRotate]
 }
