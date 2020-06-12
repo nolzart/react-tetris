@@ -20,7 +20,7 @@ import { useGameStatus } from '../hooks/useGameStatus'
 const Tetris = () => {
     const STAGE_HEIGHT = 20
     const STAGE_WIDTH = 12
-    const [laoder, setLoader] = useState(true)
+    const [loader, setLoader] = useState(true)
     const [dropTime, setDropTime] = useState(null)
     const [gameOver, setGameOver] = useState(false)
 
@@ -104,8 +104,8 @@ const Tetris = () => {
             onKeyUp={(e) => keyUp(e)} 
         >
             <StyledTetris>
-                <NextTetromino player={player.next}/>
-                <Stage stage={stage} height={STAGE_HEIGHT} width={STAGE_WIDTH} loader={laoder}/>
+                <NextTetromino player={player.next} loader={loader}/>
+                <Stage stage={stage} height={STAGE_HEIGHT} width={STAGE_WIDTH} loader={loader}/>
                 <aside>
                     <StartGame callback={startGame} />
                     { gameOver ? (<Display text="Game Over" value={ null } color={gameOver} />) 

@@ -6,9 +6,9 @@ import { StyledNextTetromino } from './styles/StyledNextTetromino'
 //Components
 import { createStage }  from '../createStage'
 import Cell from './Cell'
+import Loader from './Loader'
 
-
-const NextTetromino = ({player}) => {
+const NextTetromino = ({player, loader}) => {
     const [stage, setStage] = useState(createStage(5, 5))
     useEffect(() => {
         setStage(createStage(5, 5))
@@ -32,7 +32,8 @@ const NextTetromino = ({player}) => {
     return (
         <StyledNextTetromino>
             {
-                stage.map(row => row.map((cell, x) => <Cell key={x} type={cell[0]}/>))
+                loader ? <Loader/> 
+                : (stage.map(row => row.map((cell, x) => <Cell key={x} type={cell[0]}/>)))
             }
         </StyledNextTetromino>
     )

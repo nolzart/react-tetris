@@ -10,7 +10,7 @@ const Stage = ({ stage, height, width, loader }) => {
             {loader ? <Loader/> 
             : (stage.map((row, y) =>
                 row.map((cell, x) => <Cell key={x} type={cell[0]} />))
-              )
+            )
             }
         </StyledStage>
     )

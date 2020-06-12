@@ -18,23 +18,35 @@
   border-radius: 5px;
 }
 
+/*
+* 
+ * rgb(255,232,51) --> O
+ * 'rgb(106,255,51)' --> S
+ * 'rgb(51,255,209)', --> I
+ * 'rgb(255,51,83)' --> Z
+ * 'rgb(255,129,51)' --> L
+ * 'rgb(160,62,255)' --> T
+ * 'rgb(64,100,255)' --> J
+
+*/
+
 .elem-1 {
-  background-color: #fc6a21;
+  background-color: rgb(255,129,51);
   animation: elem-1-move 5s linear infinite;
 }
 
 .elem-2 {
-  background-color: #f84d30;
+  background-color: rgb(255,51,83);
   animation: elem-2-move 5s linear infinite;
 }
 
 .elem-3 {
-  background-color: #f02b57;
+  background-color: rgb(106,255,51);
   animation: elem-3-move 5s linear infinite;
 }
 
 .elem-4 {
-  background-color: #ec1879;
+  background-color: rgb(64,100,255);
   animation: elem-4-move 5s linear infinite;
 }
 
