@@ -63,3 +63,14 @@ export const randomTetromino = () => {
     const randomTetrominos = tetrominos[Math.floor(Math.random() * tetrominos.length)]
     return TETROMINOS[randomTetrominos]
 }
+
+/**
+ * 
+ * rgb(255,232,51) --> O
+ * 'rgb(106,255,51)' --> S
+ * 'rgb(51,255,209)', --> I
+ * 'rgb(255,51,83)' --> Z
+ * 'rgb(255,129,51)' --> L
+ * 'rgb(160,62,255)' --> T
+ * 'rgb(64,100,255)' --> J
+ */

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 
-import { createStage } from '../gameHelper'
+import { createStage } from '../createStage'
 
-export const useStage = (player, resetPlayer) => {
-    const [stage, setStage] = useState(createStage())
+export const useStage = (player, resetPlayer, gameOver) => {
+    const STAGE_HEIGHT = 20
+    const STAGE_WIDTH = 12
+    const [stage, setStage] = useState(createStage(STAGE_HEIGHT,STAGE_WIDTH))
+
     const [rowsCleared, setRowsCleared] = useState(0)
 
     useEffect(() => {
@@ -11,9 +14,9 @@ export const useStage = (player, resetPlayer) => {
 
         const sweepRows = newStage => 
             newStage.reduce((acc, row) => {
-                if(row.findIndex(cell => cell[0] === 0) === -1) {
+                if(row.findIndex(element => element[0] === 0) === -1) {
                     setRowsCleared(prev => prev + 1)
-                    acc.unshift(new Array(newStage[0].length).fill([0, 'clear']));
+                    acc.unshift(new Array(newStage[0].length).fill([0, 'clear']))
                     return acc
                 }
                 acc.push(row)
@@ -21,20 +24,19 @@ export const useStage = (player, resetPlayer) => {
             }, [])
 
         const updateStage = prevStage => {
-            // Flash the state
-            const newStage = prevStage.map(row => 
-                row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell))
-            )
-            // Then draw the tetromino
+            const newStage = prevStage.map((row, y) => 
+                    row.map((cell, x) => cell[1] === 'clear' ? [0, 'clear'] : cell
+                ))
+            
             player.tetromino.forEach((row, y) => {
-                row.forEach((value, x)=> {
-                    if(value !== 0) newStage[y + player.pos.y][x + player.pos.x] = [
-                        value,
-                        `${player.collided ? 'merged' : 'clear'}`
-                    ]
-                })
-            })
-            if (player.collided) { 
+                row.forEach((value, x) =>  { 
+                        if(value !== 0) {
+                            newStage[y + player.pos.y][x + player.pos.x] = [value, `${player.collided ? 'merged' : 'clear'}`]
+                        }
+                    }
+                )})
+            
+            if(player.collided && !gameOver){
                 resetPlayer()
                 return sweepRows(newStage)
             }
@@ -42,12 +44,7 @@ export const useStage = (player, resetPlayer) => {
         }
 
         setStage(prev => updateStage(prev))
-    }, [player.collided,
-        player.pos.x,
-        player.pos.y,
-        player.tetromino,
-        resetPlayer,])
-
+    }, [player, gameOver])
+    
     return [stage, setStage, rowsCleared]
 }
-
