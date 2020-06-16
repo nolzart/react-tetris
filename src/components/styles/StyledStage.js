@@ -8,10 +8,18 @@ export const StyledStage = styled.div`
     );
     grid-template-columns: repeat(${props => props.width}, 1fr);
     grid-gap: 1px;
-    border: 2px solid #333;
     width: 100%;
     max-width: 30rem;
-    min-width: 20rem;
+    min-width: 22rem;
     background: #111;
     border: 2px solid #999;
+    position:relative;
+
+    @media(max-width: 40rem) {
+        margin-left: -3rem;
+        margin-top: -3rem;
+        max-width: 22rem;
+        min-width: 20rem;
+    }
+
 `;

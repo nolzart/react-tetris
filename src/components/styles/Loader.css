@@ -1,6 +1,6 @@
 .container {
-  width: 105px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8,18 +8,18 @@
   margin: auto;
   text-align: center;
   animation: rotate-move 5s cubic-bezier(.5,0,.5,1) infinite;
+  
 }
 
 .elem {
-  width: 45px;
-  height: 45px;
+  width: 4.5rem;
+  height: 4.5rem;
   display: inline-block;
   margin: 1px;
-  border-radius: 5px;
+  border-radius: .5rem;
 }
 
 /*
-* 
  * rgb(255,232,51) --> O
  * 'rgb(106,255,51)' --> S
  * 'rgb(51,255,209)', --> I
@@ -27,7 +27,6 @@
  * 'rgb(255,129,51)' --> L
  * 'rgb(160,62,255)' --> T
  * 'rgb(64,100,255)' --> J
-
 */
 
 .elem-1 {
@@ -52,30 +51,30 @@
 
 @keyframes elem-1-move {
   5%, 95% {transform: translate(0, 0)}
-  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(-27px, 0px)}
-  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(-27px, 51px)}
-  44.9%, 59.9% {transform: translate(-27px, 51px)}
+  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(-2.7rem, 0px)}
+  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(-2.7rem, 5.1rem)}
+  44.9%, 59.9% {transform: translate(-2.7rem, 5.1rem)}
 }
 
 @keyframes elem-2-move {
   5%, 95% {transform: translate(0, 0)}
-  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(-27px, 0px)}
-  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(-27px, 0px)}
-  44.9%, 59.9% {transform: translate(25px, 0px)}
+  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(-2.7rem, 0px)}
+  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(-2.7rem, 0px)}
+  44.9%, 59.9% {transform: translate(2.5rem, 0px)}
 }
 
 @keyframes elem-3-move {
   5%, 95% {transform: translate(0, 0)}
-  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(25px, 0px)}
-  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(25px, 0px)}
-  44.9%, 59.9% {transform: translate(25px, 0px)}
+  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(2.5rem, 0px)}
+  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(2.5rem, 0px)}
+  44.9%, 59.9% {transform: translate(2.5rem, 0px)}
 }
 
 @keyframes elem-4-move {
   5%, 95% {transform: translate(0, 0)}
-  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(25px, 0px)}
-  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(25px, 0px)}
-  44.9%, 59.9% {transform: translate(25px, 0px)}
+  11.6%, 21.6%, 78.2%, 88.2% {transform: translate(2.5rem, 0px)}
+  28.3%, 38.3%, 61.6%, 71.6% {transform: translate(2.5rem, 0px)}
+  44.9%, 59.9% {transform: translate(2.5rem, 0px)}
 }
 
 @keyframes rotate-move {
