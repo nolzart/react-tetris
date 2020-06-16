@@ -8,7 +8,6 @@ import { createStage, checkCollision}  from '../createStage'
 import Stage from './Stage'
 import StartGame from './StartGame'
 import Display from './Display'
-import Loader from './Loader'
 import NextTetromino from './NextTetromino'
 
 //hooks
@@ -34,7 +33,7 @@ const Tetris = () => {
         setStage(createStage(STAGE_HEIGHT, STAGE_WIDTH))
         resetPlayer()
         setDropTime(1000)
-        setGameOver(false)        
+        setGameOver(false)
         setRows(0)
         setLevel(0)
         setScore(0)
